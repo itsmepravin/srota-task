@@ -1,0 +1,58 @@
+{
+  "fields": [
+    {
+      "fieldName": "brand",
+      "label": "Your Car's Brand : ",
+      "id": "brand",
+      "type": "select",
+      "values": [
+        {
+          "value": "bmw",
+          "label": "BMW"
+        },
+        {
+          "value": "porsche",
+          "label": "Porsche"
+        },
+        {
+          "value": "audi",
+          "label": "Audi"
+        },
+        {
+          "value": "tesla",
+          "label": "Tesla"
+        }
+      ]
+    },
+    {
+      "fieldName": "model",
+      "id": "model",
+      "label": "Model : ",
+      "type": "text"
+    },
+    {
+      "fieldName": "totalDistanceCovered",
+      "label": "Distance Covered (in km) : ",
+      "id": "totalDistanceCovered",
+      "type": "range",
+      "minValue": "1000",
+      "maxValue": "200000",
+      "stepValue": "1000"
+    },
+    {
+      "fieldName": "carDescription",
+      "label": "Features of your Car : ",
+      "id": "carDescription",
+      "type": "textarea",
+      "rows": 8,
+      "columns": 60,
+      "description": "Details of your car like Mileage, Engine condition, etc"
+    },
+    {
+      "type": "file",
+      "label": "Would you like to upload a picture of your car?",
+      "id": "imageInput",
+      "divID": "imageOutput"
+    }
+  ]
+}

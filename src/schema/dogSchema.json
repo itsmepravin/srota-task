@@ -1,0 +1,69 @@
+{
+  "fields": [
+    {
+      "fieldName": "name",
+      "id": "name",
+      "label": "Pet Name : ",
+      "type": "text"
+    },
+    {
+      "fieldName": "age",
+      "id": "age",
+      "label": "Age : ",
+      "type": "number"
+    },
+    {
+      "fieldName": "togetherFrom",
+      "id": "togetherFrom",
+      "label": "Together From : ",
+      "type": "date"
+    },
+    {
+      "fieldName": "gender",
+      "label": "Gender : ",
+      "type": "radio",
+      "values": [
+        {
+          "id": "male",
+          "value": "Male",
+          "label": "Male"
+        },
+        {
+          "id": "female",
+          "value": "Female",
+          "label": "Female"
+        }
+      ]
+    },
+    {
+      "fieldName": "breed",
+      "label": "Your Pet's Breed : ",
+      "id": "breed",
+      "type": "select",
+      "values": [
+        {
+          "value": "labrador",
+          "label": "Labrador"
+        },
+        {
+          "value": "japaneseSpitz",
+          "label": "Japanese Spitz"
+        },
+        {
+          "value": "goldenRetriever",
+          "label": "Golden Retriever"
+        },
+        {
+          "value": "husky",
+          "label": "Husky"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "label": "Please upload an image of your pet : ",
+      "id": "imageInput",
+      "divID": "imageOutput"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "fields": [
+    {
+      "fieldName": "fName",
+      "id": "fName",
+      "label": "First Name : ",
+      "type": "text"
+    },
+    {
+      "fieldName": "lName",
+      "id": "lName",
+      "label": "Last Name : ",
+      "type": "text"
+    },
+    {
+      "fieldName": "age",
+      "id": "age",
+      "label": "Age : ",
+      "type": "number"
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "id": "dateOfBirth",
+      "label": "Date of Birth : ",
+      "type": "date"
+    },
+    {
+      "fieldName": "race",
+      "label": "Race : ",
+      "type": "radio",
+      "values": [
+        {
+          "id": "white",
+          "value": "White",
+          "label": "White"
+        },
+        {
+          "id": "black",
+          "value": "Black",
+          "label": "Black"
+        },
+        {
+          "id": "hispanic",
+          "value": "Hispanic",
+          "label": "Hispanic"
+        },
+        {
+          "id": "mexican",
+          "value": "Mexican",
+          "label": "Mexican"
+        }
+      ]
+    },
+    {
+      "fieldName": "educationLevel",
+      "label": "Education Level : ",
+      "id": "educationLevel",
+      "type": "select",
+      "values": [
+        {
+          "value": "highSchool",
+          "label": "High School"
+        },
+        {
+          "value": "plusTwoALevel",
+          "label": "Plus Two/A-Level"
+        },
+        {
+          "value": "bachelors",
+          "label": "Bachelors"
+        },
+        {
+          "value": "masters",
+          "label": "Masters"
+        }
+      ]
+    },
+    {
+      "fieldName": "salary",
+      "label": "Salary (in Rupees) : ",
+      "id": "salary",
+      "type": "range",
+      "minValue": "10000",
+      "maxValue": "100000",
+      "stepValue": "1000"
+    },
+    {
+      "fieldName": "aboutYourself",
+      "label": "About Yourself : ",
+      "id": "aboutYourself",
+      "type": "textarea",
+      "rows": 5,
+      "columns": 50,
+      "description": "Please describe yourself here..."
+    }
+  ]
+}
