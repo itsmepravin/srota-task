@@ -9,10 +9,16 @@ import vehicleSchema from "../schema/vehicleSchema.json";
 const SelectSchema = ({ setSchemaText, setSchema }) => {
   // function responsible for handling the aftermath of change of radiobutton value
   const handleSchemaChange = (e) => {
-    setSchemaText(e.target.value);
-    if (e.target.value === "personSchema") setSchema(personSchema);
-    else if (e.target.value === "dogSchema") setSchema(dogSchema);
-    else if (e.target.value === "vehicleSchema") setSchema(vehicleSchema);
+    if (e.target.value === "personSchema") {
+      setSchema(personSchema);
+      setSchemaText("personSchema");
+    } else if (e.target.value === "dogSchema") {
+      setSchema(dogSchema);
+      setSchemaText("dogSchema");
+    } else if (e.target.value === "vehicleSchema") {
+      setSchema(vehicleSchema);
+      setSchemaText("vehicleSchema");
+    }
   };
 
   return (

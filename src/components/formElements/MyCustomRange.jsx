@@ -1,10 +1,21 @@
 import { useState } from "react";
 
-const MyCustomRange = ({ formFieldData }) => {
+// Please see utils/helpers.js for more info
+import { handleInputValues } from "../../utils/helpers";
+
+const MyCustomRange = ({
+  formFieldData,
+  schemaText,
+  setPersonData,
+  setDogData,
+  setVehicleData,
+}) => {
   const [rangeValue, setRangeValue] = useState(formFieldData.minValue);
 
   const handleRangeValueChange = (e) => {
     setRangeValue(e.target.value);
+    // all changes handled by handleInputValues function
+    handleInputValues(e, schemaText, setPersonData, setDogData, setVehicleData);
   };
   return (
     <div style={{ display: "flex" }}>

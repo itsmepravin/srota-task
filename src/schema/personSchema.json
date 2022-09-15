@@ -27,8 +27,13 @@
     {
       "fieldName": "race",
       "label": "Race : ",
+      "id": "race",
       "type": "radio",
       "values": [
+        {
+          "value": null,
+          "label": ""
+        },
         {
           "id": "white",
           "value": "White",
@@ -58,19 +63,19 @@
       "type": "select",
       "values": [
         {
-          "value": "highSchool",
+          "value": "High School",
           "label": "High School"
         },
         {
-          "value": "plusTwoALevel",
+          "value": "Plus Two/A-Level",
           "label": "Plus Two/A-Level"
         },
         {
-          "value": "bachelors",
+          "value": "Bachelors",
           "label": "Bachelors"
         },
         {
-          "value": "masters",
+          "value": "Masters",
           "label": "Masters"
         }
       ]

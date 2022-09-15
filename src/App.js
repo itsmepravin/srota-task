@@ -13,18 +13,6 @@ function App() {
         {/* Main Form */}
         <MyForm />
       </div>
-
-      {/* Footer */}
-      <footer
-        style={{
-          fontSize: "20px",
-          position: "absolute",
-          bottom: 0,
-          right: "50%",
-        }}
-      >
-        By Pravin Singh
-      </footer>
     </div>
   );
 }

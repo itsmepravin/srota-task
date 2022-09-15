@@ -21,6 +21,7 @@
     {
       "fieldName": "gender",
       "label": "Gender : ",
+      "id": "gender",
       "type": "radio",
       "values": [
         {
@@ -42,19 +43,23 @@
       "type": "select",
       "values": [
         {
-          "value": "labrador",
+          "value": null,
+          "label": ""
+        },
+        {
+          "value": "Labrador",
           "label": "Labrador"
         },
         {
-          "value": "japaneseSpitz",
+          "value": "Japanese Spitz",
           "label": "Japanese Spitz"
         },
         {
-          "value": "goldenRetriever",
+          "value": "Golden Retriever",
           "label": "Golden Retriever"
         },
         {
-          "value": "husky",
+          "value": "Husky",
           "label": "Husky"
         }
       ]
@@ -62,7 +67,7 @@
     {
       "type": "file",
       "label": "Please upload an image of your pet : ",
-      "id": "imageInput",
+      "id": "dogImage",
       "divID": "imageOutput"
     }
   ]

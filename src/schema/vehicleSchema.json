@@ -7,19 +7,23 @@
       "type": "select",
       "values": [
         {
-          "value": "bmw",
+          "value": null,
+          "label": ""
+        },
+        {
+          "value": "BMW",
           "label": "BMW"
         },
         {
-          "value": "porsche",
+          "value": "Porsche",
           "label": "Porsche"
         },
         {
-          "value": "audi",
+          "value": "Audi",
           "label": "Audi"
         },
         {
-          "value": "tesla",
+          "value": "Tesla",
           "label": "Tesla"
         }
       ]
@@ -51,7 +55,7 @@
     {
       "type": "file",
       "label": "Would you like to upload a picture of your car?",
-      "id": "imageInput",
+      "id": "vehicleImage",
       "divID": "imageOutput"
     }
   ]

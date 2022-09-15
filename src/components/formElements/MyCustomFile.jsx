@@ -1,35 +1,38 @@
-const MyCustomFile = ({ formFieldData }) => {
-  const handleFileChange = (e) => {
-    const reader = new FileReader();
-    // Adding an "onload" event listener, so that after the image is uploaded
-    // we select the Image Output Div and set its's background image to the result from the FileReader
-    // This is also and async function
-    reader.addEventListener("load", () => {
-      document.querySelector(
-        "#imageOutput"
-      ).style.backgroundImage = `url(${reader.result})`;
-    });
+// Please see utils/helpers.js for more info
+import { _handleImageSave } from "../../utils/helpers";
 
-    // This gets called first
-    reader.readAsDataURL(e.target.files[0]);
+// Small library to convert image to base64
+import FileBase64 from "react-filebase64";
+
+const MyCustomFile = ({
+  formFieldData,
+  schemaText,
+  setDogData,
+  setVehicleData,
+}) => {
+  const handleFileChange = async (base64) => {
+    document.querySelector(
+      "#imageOutput"
+    ).style.backgroundImage = `url(${base64})`;
+
+    // all changes handled by _handleImageSave function
+    _handleImageSave(schemaText, setDogData, setVehicleData, base64);
   };
 
   return (
     <div>
       <p>{formFieldData.label}</p>
       {/* Image Input Button */}
-      <input
-        type="file"
-        id={formFieldData.id}
-        accept="image/jpeg, image/png, image/jpg"
-        onChange={(event) => handleFileChange(event)}
+      <FileBase64
+        multiple={false}
+        onDone={({ base64 }) => handleFileChange(base64)}
       />
 
       {/* Image Output Div */}
       <div
         style={{
-          width: "400px",
-          height: "300px",
+          width: "350px",
+          height: "180px",
           backgroundPosition: "center",
           backgroundSize: "cover",
           marginTop: "12px",

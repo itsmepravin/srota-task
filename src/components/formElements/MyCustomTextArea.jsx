@@ -1,4 +1,13 @@
-const MyCustomTextArea = ({ formFieldData }) => {
+// Please see utils/helpers.js for more info
+import { handleInputValues } from "../../utils/helpers";
+
+const MyCustomTextArea = ({
+  formFieldData,
+  schemaText,
+  setPersonData,
+  setDogData,
+  setVehicleData,
+}) => {
   return (
     <>
       <p>
@@ -9,9 +18,18 @@ const MyCustomTextArea = ({ formFieldData }) => {
         name={formFieldData.id}
         rows={formFieldData.rows}
         cols={formFieldData.columns}
-      >
-        {formFieldData.description}
-      </textarea>
+        defaultValue={formFieldData.description}
+        // all changes handled by handleInputValues function
+        onChange={(event) =>
+          handleInputValues(
+            event,
+            schemaText,
+            setPersonData,
+            setDogData,
+            setVehicleData
+          )
+        }
+      />
     </>
   );
 };
