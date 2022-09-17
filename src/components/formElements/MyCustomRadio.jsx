@@ -1,13 +1,16 @@
+import { useContext } from "react";
+import { MainContext } from "../../Main";
+
 // Please see utils/helpers.js for more info
 import { handleInputValues } from "../../utils/helpers";
 
-const MyCustomRadio = ({
-  formFieldData,
-  schemaText,
-  setPersonData,
-  setDogData,
-  setVehicleData,
-}) => {
+const MyCustomRadio = ({ formFieldData }) => {
+  // state values/setState functions from MainContext
+  const allInfo = useContext(MainContext);
+  const { schemaText } = allInfo.schemaInfo;
+  const { setPersonData } = allInfo.personsInfo;
+  const { setDogData } = allInfo.dogsInfo;
+
   return (
     <div>
       <span>{formFieldData.label}</span>
@@ -21,13 +24,7 @@ const MyCustomRadio = ({
             value={radioValue.value}
             // all changes handled by handleInputValues function
             onChange={(event) =>
-              handleInputValues(
-                event,
-                schemaText,
-                setPersonData,
-                setDogData,
-                setVehicleData
-              )
+              handleInputValues(event, schemaText, setPersonData, setDogData)
             }
           />
             <label htmlFor={radioValue.id}>{radioValue.label}</label>

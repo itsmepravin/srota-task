@@ -1,22 +1,31 @@
-const VehicleTable = ({ allVehicles }) => {
-  // Getting all the keys to render as table headings
-  const allVehiclesKeys = Object.keys(allVehicles[0]);
+import vehicleSchema from "../../schema/vehicleSchema.json";
+
+import { useContext } from "react";
+import { MainContext } from "../../Main";
+
+const VehicleTable = () => {
+  const allInfo = useContext(MainContext);
+  const { allVehicles } = allInfo.vehiclesInfo;
+  // Getting all the table headings
+  const vehiclesHeadings = vehicleSchema.fields.map(
+    (element) => element.tableName
+  );
   return (
-    <table style={{ textAlign: "center", width: "1080px" }}>
+    <table style={{ textAlign: "center" }}>
       <thead>
-        {allVehiclesKeys.map((element) => (
-          <td>{element.toUpperCase()}</td>
+        {vehiclesHeadings.map((element) => (
+          <td>{element}</td>
         ))}
       </thead>
       {allVehicles.map((element) => (
         <tbody>
           <tr>
             <td>{element.brand}</td>
-            <td>{element.carDescription}</td>
             <td>{element.model}</td>
             <td>{element.totalDistanceCovered}</td>
+            <td>{element.carDescription}</td>
             <td>
-              <img src={element.vehicleImage} width={160} height={120} />
+              <img src={element.vehicleImage} width={180} height={120} alt="" />
             </td>
           </tr>
         </tbody>

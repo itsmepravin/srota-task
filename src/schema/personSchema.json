@@ -4,36 +4,37 @@
       "fieldName": "fName",
       "id": "fName",
       "label": "First Name : ",
-      "type": "text"
+      "type": "text",
+      "tableName": "First Name"
     },
     {
       "fieldName": "lName",
       "id": "lName",
       "label": "Last Name : ",
-      "type": "text"
+      "type": "text",
+      "tableName": "Last Name"
     },
     {
       "fieldName": "age",
       "id": "age",
       "label": "Age : ",
-      "type": "number"
+      "type": "number",
+      "tableName": "Age"
     },
     {
       "fieldName": "dateOfBirth",
       "id": "dateOfBirth",
       "label": "Date of Birth : ",
-      "type": "date"
+      "type": "date",
+      "tableName": "D.O.B"
     },
     {
       "fieldName": "race",
       "label": "Race : ",
       "id": "race",
       "type": "radio",
+      "tableName": "Race",
       "values": [
-        {
-          "value": null,
-          "label": ""
-        },
         {
           "id": "white",
           "value": "White",
@@ -61,7 +62,12 @@
       "label": "Education Level : ",
       "id": "educationLevel",
       "type": "select",
+      "tableName": "Education",
       "values": [
+        {
+          "value": null,
+          "label": ""
+        },
         {
           "value": "High School",
           "label": "High School"
@@ -87,7 +93,8 @@
       "type": "range",
       "minValue": "10000",
       "maxValue": "100000",
-      "stepValue": "1000"
+      "stepValue": "1000",
+      "tableName": "Salary"
     },
     {
       "fieldName": "aboutYourself",
@@ -96,7 +103,8 @@
       "type": "textarea",
       "rows": 5,
       "columns": 50,
-      "description": "Please describe yourself here..."
+      "description": "Please describe yourself here...",
+      "tableName": "About You"
     }
   ]
 }

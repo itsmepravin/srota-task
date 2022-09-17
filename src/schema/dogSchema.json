@@ -4,25 +4,29 @@
       "fieldName": "name",
       "id": "name",
       "label": "Pet Name : ",
-      "type": "text"
+      "type": "text",
+      "tableName": "Pet Name"
     },
     {
       "fieldName": "age",
       "id": "age",
       "label": "Age : ",
-      "type": "number"
+      "type": "number",
+      "tableName": "Age"
     },
     {
       "fieldName": "togetherFrom",
       "id": "togetherFrom",
       "label": "Together From : ",
-      "type": "date"
+      "type": "date",
+      "tableName": "Met"
     },
     {
       "fieldName": "gender",
       "label": "Gender : ",
       "id": "gender",
       "type": "radio",
+      "tableName": "Gender",
       "values": [
         {
           "id": "male",
@@ -41,6 +45,7 @@
       "label": "Your Pet's Breed : ",
       "id": "breed",
       "type": "select",
+      "tableName": "Breed",
       "values": [
         {
           "value": null,
@@ -68,7 +73,8 @@
       "type": "file",
       "label": "Please upload an image of your pet : ",
       "id": "dogImage",
-      "divID": "imageOutput"
+      "divID": "imageOutput",
+      "tableName": "Pet Image"
     }
   ]
 }

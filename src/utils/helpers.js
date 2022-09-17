@@ -1,6 +1,8 @@
-import allPersons from "../data/initialPersonData.json";
-import allDogs from "../data/initialDogData.json";
-import allVehicles from "../data/initialVechicleData.json";
+import { useState } from "react";
+
+import dummyPersons from "../data/initialPersonData.json";
+import dummyDogs from "../data/initialDogData.json";
+import dummyVehicles from "../data/initialVechicleData.json";
 
 import personSchema from "../schema/personSchema.json";
 import dogsSchema from "../schema/dogSchema.json";
@@ -76,10 +78,58 @@ export const _handleImageSave = (
 // Initializing application with dummy data,
 // then updating the localStorage and the state
 export const _initializeData = (setAllPersons, setAllDogs, setAllVehicles) => {
-  localStorage.setItem("allPersons", JSON.stringify(allPersons));
+  localStorage.setItem("allPersons", JSON.stringify(dummyPersons));
   setAllPersons(JSON.parse(localStorage.getItem("allPersons")));
-  localStorage.setItem("allDogs", JSON.stringify(allDogs));
+  localStorage.setItem("allDogs", JSON.stringify(dummyDogs));
   setAllDogs(JSON.parse(localStorage.getItem("allDogs")));
-  localStorage.setItem("allVehicles", JSON.stringify(allVehicles));
+  localStorage.setItem("allVehicles", JSON.stringify(dummyVehicles));
   setAllVehicles(JSON.parse(localStorage.getItem("allVehicles")));
+};
+
+// Even though it looks it's a Component,
+// I use it as an normal function, to return the global state objext called allInfo here,
+// because useState cannot be called outside of React Component.
+// This function puts all the state and their setState functions in one place
+export const ContextFunc = () => {
+  // Current schema and current schemaText state
+  const [schema, setSchema] = useState(null);
+  const [schemaText, setSchemaText] = useState("");
+
+  // Single data
+  const [personData, setPersonData] = useState(personDetails);
+  const [dogData, setDogData] = useState(dogDetails);
+  const [vehicleData, setVehicleData] = useState(vehicleDetails);
+
+  // Collections of all respective schemas
+  const [allPersons, setAllPersons] = useState([]);
+  const [allDogs, setAllDogs] = useState([]);
+  const [allVehicles, setAllVehicles] = useState([]);
+
+  const allInfo = {
+    schemaInfo: {
+      schema,
+      setSchema,
+      schemaText,
+      setSchemaText,
+    },
+    personsInfo: {
+      personData,
+      setPersonData,
+      allPersons,
+      setAllPersons,
+    },
+    dogsInfo: {
+      dogData,
+      setDogData,
+      allDogs,
+      setAllDogs,
+    },
+    vehiclesInfo: {
+      vehicleData,
+      setVehicleData,
+      allVehicles,
+      setAllVehicles,
+    },
+  };
+  return allInfo;
 };

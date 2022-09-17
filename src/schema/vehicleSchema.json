@@ -5,6 +5,7 @@
       "label": "Your Car's Brand : ",
       "id": "brand",
       "type": "select",
+      "tableName": "Brand",
       "values": [
         {
           "value": null,
@@ -32,7 +33,8 @@
       "fieldName": "model",
       "id": "model",
       "label": "Model : ",
-      "type": "text"
+      "type": "text",
+      "tableName": "Model"
     },
     {
       "fieldName": "totalDistanceCovered",
@@ -41,7 +43,8 @@
       "type": "range",
       "minValue": "1000",
       "maxValue": "200000",
-      "stepValue": "1000"
+      "stepValue": "1000",
+      "tableName": "Distance"
     },
     {
       "fieldName": "carDescription",
@@ -50,13 +53,15 @@
       "type": "textarea",
       "rows": 8,
       "columns": 60,
-      "description": "Details of your car like Mileage, Engine condition, etc"
+      "description": "Details of your car like Mileage, Engine condition, etc",
+      "tableName": "Description"
     },
     {
       "type": "file",
-      "label": "Would you like to upload a picture of your car?",
+      "label": "Would you like to upload a picture of your vehicle?",
       "id": "vehicleImage",
-      "divID": "imageOutput"
+      "divID": "imageOutput",
+      "tableName": "Vehicle Image"
     }
   ]
 }

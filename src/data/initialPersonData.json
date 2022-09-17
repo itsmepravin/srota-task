@@ -2,11 +2,21 @@
   {
     "fName": "Rajesh",
     "lName": "Hamal",
-    "age": "50",
-    "dateOfBirth": "09-09-2012",
+    "age": "64",
+    "dateOfBirth": "06-09-1958",
     "race": "White",
     "educationLevel": "High School",
+    "salary": "63000",
+    "aboutYourself": "Nepali film actor, singer, model, and television host."
+  },
+  {
+    "fName": "Elon",
+    "lName": "Musk",
+    "age": "51",
+    "dateOfBirth": "06-28-1971",
+    "race": "White",
+    "educationLevel": "Masters",
     "salary": "100000",
-    "aboutYourself": "I am an Nepali actor."
+    "aboutYourself": "Founder/CEO of SpaceX and Tesla Inc."
   }
 ]

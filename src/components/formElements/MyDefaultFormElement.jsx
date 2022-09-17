@@ -1,13 +1,15 @@
+import { useContext } from "react";
+import { MainContext } from "../../Main";
+
 // Please see utils/helpers.js for more info
 import { handleInputValues } from "../../utils/helpers";
 
-const MyDefaultFormElement = ({
-  formFieldData,
-  setPersonData,
-  setDogData,
-  setVehicleData,
-  schemaText,
-}) => {
+const MyDefaultFormElement = ({ formFieldData }) => {
+  const allInfo = useContext(MainContext);
+  const { schemaText } = allInfo.schemaInfo;
+  const { setPersonData } = allInfo.personsInfo;
+  const { setDogData } = allInfo.dogsInfo;
+  const { setVehicleData } = allInfo.vehiclesInfo;
   return (
     <>
       <div>

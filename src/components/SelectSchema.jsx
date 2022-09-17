@@ -6,7 +6,14 @@ import personSchema from "../schema/personSchema.json";
 import dogSchema from "../schema/dogSchema.json";
 import vehicleSchema from "../schema/vehicleSchema.json";
 
-const SelectSchema = ({ setSchemaText, setSchema }) => {
+import { MainContext } from "../Main";
+import { useContext } from "react";
+
+const SelectSchema = () => {
+  // Getting the state values from the global state object inside MainContext
+  const allInfo = useContext(MainContext);
+  const { setSchema, setSchemaText } = allInfo.schemaInfo;
+
   // function responsible for handling the aftermath of change of radiobutton value
   const handleSchemaChange = (e) => {
     if (e.target.value === "personSchema") {
@@ -22,12 +29,7 @@ const SelectSchema = ({ setSchemaText, setSchema }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <div className="selectSchemaContainer">
       <p>
         <strong>Please select a schema : </strong>
       </p>
@@ -39,7 +41,7 @@ const SelectSchema = ({ setSchemaText, setSchema }) => {
         onClick={(event) => handleSchemaChange(event)}
       />
 
-      <label htmlFor="people">Person</label>
+      <label htmlFor="people">Persons</label>
       <input
         type="radio"
         id="dogs"
@@ -56,7 +58,7 @@ const SelectSchema = ({ setSchemaText, setSchema }) => {
         value="vehicleSchema"
         onClick={(event) => handleSchemaChange(event)}
       />
-      <label htmlFor="vehicle">Vehicle</label>
+      <label htmlFor="vehicle">Vehicles</label>
     </div>
   );
 };

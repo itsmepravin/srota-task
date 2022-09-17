@@ -1,16 +1,19 @@
+import { useContext } from "react";
+import { MainContext } from "../../Main";
+
 // Please see utils/helpers.js for more info
 import { _handleImageSave } from "../../utils/helpers";
 
 // Small library to convert image to base64
 import FileBase64 from "react-filebase64";
 
-const MyCustomFile = ({
-  formFieldData,
-  schemaText,
-  setDogData,
-  setVehicleData,
-}) => {
-  const handleFileChange = async (base64) => {
+const MyCustomFile = ({ formFieldData }) => {
+  const allInfo = useContext(MainContext);
+  const { schemaText } = allInfo.schemaInfo;
+  const { setDogData } = allInfo.dogsInfo;
+  const { setVehicleData } = allInfo.vehiclesInfo;
+
+  const handleFileChange = (base64) => {
     document.querySelector(
       "#imageOutput"
     ).style.backgroundImage = `url(${base64})`;
@@ -29,16 +32,7 @@ const MyCustomFile = ({
       />
 
       {/* Image Output Div */}
-      <div
-        style={{
-          width: "350px",
-          height: "180px",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          marginTop: "12px",
-        }}
-        id={formFieldData.divID}
-      ></div>
+      <div className="imagePreview" id={formFieldData.divID}></div>
     </div>
   );
 };

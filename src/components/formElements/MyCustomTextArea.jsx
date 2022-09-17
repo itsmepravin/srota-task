@@ -1,13 +1,14 @@
+import { useContext } from "react";
+import { MainContext } from "../../Main";
+
 // Please see utils/helpers.js for more info
 import { handleInputValues } from "../../utils/helpers";
 
-const MyCustomTextArea = ({
-  formFieldData,
-  schemaText,
-  setPersonData,
-  setDogData,
-  setVehicleData,
-}) => {
+const MyCustomTextArea = ({ formFieldData }) => {
+  const allInfo = useContext(MainContext);
+  const { schemaText } = allInfo.schemaInfo;
+  const { setPersonData } = allInfo.personsInfo;
+  const { setVehicleData } = allInfo.vehiclesInfo;
   return (
     <>
       <p>
@@ -25,7 +26,7 @@ const MyCustomTextArea = ({
             event,
             schemaText,
             setPersonData,
-            setDogData,
+            null,
             setVehicleData
           )
         }

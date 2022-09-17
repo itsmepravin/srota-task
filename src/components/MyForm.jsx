@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 
-import SelectSchema from "./SelectSchema";
+import { MainContext } from "../Main";
 
 import MyCustomRadio from "./formElements/MyCustomRadio";
 import MyCustomSelect from "./formElements/MyCustomSelect";
@@ -9,36 +9,25 @@ import MyCustomFile from "./formElements/MyCustomFile";
 import MyCustomTextArea from "./formElements/MyCustomTextArea";
 import MyDefaultFormElement from "./formElements/MyDefaultFormElement";
 
-// Component responsible for displayiny all data
-import MyTable from "./MyTable";
-
 // Helper Functions and Constants
-import {
-  personDetails,
-  dogDetails,
-  vehicleDetails,
-  _initializeData,
-} from "../utils/helpers";
+import { _initializeData } from "../utils/helpers";
 
 const MyForm = () => {
-  const [schema, setSchema] = useState(null); // handled by SelectSchema component through radio buttons
-  const [schemaText, setSchemaText] = useState(""); // helper state
+  // state values/setState functions from MainContext
+  const allInfo = useContext(MainContext);
+  const { schema, schemaText } = allInfo.schemaInfo;
+  const { personData, allPersons, setAllPersons } = allInfo.personsInfo;
+  const { dogData, allDogs, setAllDogs } = allInfo.dogsInfo;
+  const { vehicleData, allVehicles, setAllVehicles } = allInfo.vehiclesInfo;
 
-  // State that deals with only singular/one instance of data
-  const [personData, setPersonData] = useState(personDetails);
-  const [dogData, setDogData] = useState(dogDetails);
-  const [vehicleData, setVehicleData] = useState(vehicleDetails);
+  useEffect(() => {
+    // Function to initialize the localStorage with some dummy data
+    _initializeData(setAllPersons, setAllDogs, setAllVehicles);
+  }, []);
 
-  // State that deals with multiple or collections of data
-  const [allPersons, setAllPersons] = useState([]);
-  const [allDogs, setAllDogs] = useState([]);
-  const [allVehicles, setAllVehicles] = useState([]);
-
-  // Function that gets invoked after submit button is pressed
-  const handleFormSubmit = (e) => {
+  const handleFormSubmission = (e) => {
     e.preventDefault();
-    // Check to see what the current schema is
-    // and adding data to the localStorage data object and the multiple state objects
+
     if (schemaText === "personSchema") {
       setAllPersons(allPersons.concat(personData));
       localStorage.setItem("allPersons", JSON.stringify(allPersons));
@@ -50,86 +39,38 @@ const MyForm = () => {
       localStorage.setItem("allVehicles", JSON.stringify(allVehicles));
     }
     alert("New Data added successfully!");
-
-    // Clearing all the fields after submission
-    setPersonData(personDetails);
-    setDogData(dogDetails);
-    setVehicleData(vehicleDetails);
   };
-
-  useEffect(() => {
-    // Function to initialize the localStorage with some dummy data
-    _initializeData(setAllPersons, setAllDogs, setAllVehicles);
-  }, []);
 
   return (
     <div>
-      {/* Select one of three Schemas from this component */}
-      <SelectSchema setSchema={setSchema} setSchemaText={setSchemaText} />
-
       {/* Ternary Check to see if schemaText has a value or not */}
-
       {schemaText === "" ? (
         <p style={{ textAlign: "center" }}>Nothing to show</p>
       ) : (
         // The actual interactable form elements displayed on the screen
         <>
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={handleFormSubmission}>
             {schema?.fields?.map((element) => {
               // Dynamic check to see what the type is in JSON schema, and rendering components accordingly
               if (element.type === "radio")
                 return (
-                  <MyCustomRadio
-                    key={element.id}
-                    formFieldData={element}
-                    schemaText={schemaText}
-                    setPersonData={setPersonData}
-                    setDogData={setDogData}
-                    setVehicleData={setVehicleData}
-                  />
+                  <MyCustomRadio key={element.id} formFieldData={element} />
                 );
               else if (element.type === "select")
                 return (
-                  <MyCustomSelect
-                    key={element.id}
-                    formFieldData={element}
-                    schemaText={schemaText}
-                    setPersonData={setPersonData}
-                    setDogData={setDogData}
-                    setVehicleData={setVehicleData}
-                  />
+                  <MyCustomSelect key={element.id} formFieldData={element} />
                 );
               else if (element.type === "range")
                 return (
-                  <MyCustomRange
-                    key={element.id}
-                    formFieldData={element}
-                    schemaText={schemaText}
-                    setPersonData={setPersonData}
-                    setDogData={setDogData}
-                    setVehicleData={setVehicleData}
-                  />
+                  <MyCustomRange key={element.id} formFieldData={element} />
                 );
               else if (element.type === "file")
                 return (
-                  <MyCustomFile
-                    key={element.id}
-                    formFieldData={element}
-                    schemaText={schemaText}
-                    setDogData={setDogData}
-                    setVehicleData={setVehicleData}
-                  />
+                  <MyCustomFile key={element.id} formFieldData={element} />
                 );
               else if (element.type === "textarea")
                 return (
-                  <MyCustomTextArea
-                    key={element.id}
-                    formFieldData={element}
-                    schemaText={schemaText}
-                    setPersonData={setPersonData}
-                    setDogData={setDogData}
-                    setVehicleData={setVehicleData}
-                  />
+                  <MyCustomTextArea key={element.id} formFieldData={element} />
                 );
 
               // Simple default component if nothing matches
@@ -137,26 +78,15 @@ const MyForm = () => {
                 <MyDefaultFormElement
                   key={element.id}
                   formFieldData={element}
-                  setPersonData={setPersonData}
-                  setDogData={setDogData}
-                  setVehicleData={setVehicleData}
-                  schemaText={schemaText}
                 />
               );
             })}
             <br />
-            <input type="submit" />
+            {/* Submit Button */}
+            <input className="submitBtn" type="submit" />
           </form>
         </>
       )}
-
-      {/* Data Rendering Component */}
-      <MyTable
-        schemaText={schemaText}
-        allPersons={allPersons}
-        allDogs={allDogs}
-        allVehicles={allVehicles}
-      />
     </div>
   );
 };

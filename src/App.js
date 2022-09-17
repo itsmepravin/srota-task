@@ -1,18 +1,11 @@
-import MyForm from "./components/MyForm";
+import Main from "./Main";
+import "./App.css";
 
 function App() {
   return (
-    <div style={{ height: "100vh" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* Main Form */}
-        <MyForm />
-      </div>
+    <div className="appContainer">
+      {/* The Main Component of this App */}
+      <Main />
     </div>
   );
 }
