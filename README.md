@@ -1,4 +1,4 @@
-## [Live](https://github.com/itsmepravin/srota-task)
+## [Live](https://srota-task-pravin.netlify.app/)
 
 ## Made By Pravin Singh as an internship task for Srota/Pahelotape to apply for Frontend/Dataviz Intern role
 
